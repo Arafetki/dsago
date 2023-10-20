@@ -1,25 +1,29 @@
 package arrays
 
+import (
+	"golang.org/x/exp/constraints"
+)
+
 // Search algorithms
 
 // @ Linear Search -- O(N) Time Complexity (Worst Case) -- N=len(arr)
 
-func LinearSearch[T comparable](arr []T, el T) (int, bool) {
-	for i, val := range arr {
+func LinearSearch[T constraints.Ordered](arr []T, el T) bool {
+	for _, val := range arr {
 		if val == el {
-			return i, true
+			return true
 		}
 	}
-	return -1, false
+	return false
 }
 
 // @ Binary Search -- O(logN) Time Complexity (Worst Case) -- N=len(arr)
 
-func BinarySearch(arr []int, l, r int, el int) (int, bool) {
+func BinarySearch[T constraints.Ordered](arr []T, l, r int, el T) bool {
 	for l <= r {
 		mid := l + (r-l)/2
 		if el == arr[mid] {
-			return mid, true
+			return true
 		}
 		if el < arr[mid] {
 			r = mid - 1
@@ -28,5 +32,5 @@ func BinarySearch(arr []int, l, r int, el int) (int, bool) {
 		}
 
 	}
-	return -1, false
+	return false
 }
