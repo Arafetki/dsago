@@ -34,3 +34,31 @@ func BinarySearch[T constraints.Ordered](arr []T, l, r int, el T) bool {
 	}
 	return false
 }
+
+// Max & Min
+
+// @ Find Maximum -- O(N) Time Complexity (Worst Case) -- N=len(arr)
+
+func FindMax[T constraints.Ordered](arr []T) T {
+	max := arr[0]
+	for _, v := range arr {
+		if v > max {
+			max = v
+		}
+	}
+	return max
+}
+
+// @ Find Minimum -- O(N) Time Complexity (Worst Case) -- N=len(arr)
+
+func FindMin[T constraints.Ordered](arr []T) T {
+	min := arr[0]
+	for _, v := range arr {
+		if v < min {
+			min = v
+		}
+	}
+	return min
+}
+
+// Sorting algorithms
